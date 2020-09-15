@@ -21,6 +21,8 @@
 		58C1B914242090CB0065454F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C1B912242090CB0065454F /* LaunchScreen.storyboard */; };
 		58C1B92724213B220065454F /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1B92024213B220065454F /* Engine.framework */; };
 		58C1B92824213B220065454F /* Engine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1B92024213B220065454F /* Engine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		58F917C9251176A9006DF422 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F917C8251176A9006DF422 /* World.swift */; };
+		58F917CB2511778F006DF422 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F917CA2511778F006DF422 /* Rect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		58C1B915242090CB0065454F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58C1B92024213B220065454F /* Engine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Engine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C1B92324213B220065454F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58F917C8251176A9006DF422 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
+		58F917CA2511778F006DF422 /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +129,9 @@
 				580004E725104F2300977C3E /* Color.swift */,
 				580004EF25105A0200977C3E /* Vector.swift */,
 				580004F125105A7100977C3E /* Player.swift */,
+				58F917C8251176A9006DF422 /* World.swift */,
 				580004ED2510584D00977C3E /* Renderer.swift */,
+				58F917CA2511778F006DF422 /* Rect.swift */,
 				580004E925104F9100977C3E /* Bitmap.swift */,
 			);
 			path = Engine;
@@ -255,6 +261,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F917CB2511778F006DF422 /* Rect.swift in Sources */,
+				58F917C9251176A9006DF422 /* World.swift in Sources */,
 				580004EA25104F9100977C3E /* Bitmap.swift in Sources */,
 				580004EE2510584D00977C3E /* Renderer.swift in Sources */,
 				580004F025105A0200977C3E /* Vector.swift in Sources */,
