@@ -7,12 +7,12 @@
 //
 
 public struct World {
-    public let size: Vector
+    public let map: Tilemap
     public var player: Player
     
-    public init() {
-        self.size = Vector(x: 8, y: 8)
-        self.player = Player(position: Vector(x: 4, y: 4))
+    public init(map: Tilemap) {
+        self.map = map
+        self.player = Player(position: map.size / 2)
     }
 }
 
@@ -23,6 +23,10 @@ public extension World {
         player.position.y += 8
         player.position.x.formTruncatingRemainder(dividingBy: 8)
         player.position.y.formTruncatingRemainder(dividingBy: 8)
+    }
+    
+    var size: Vector {
+        return map.size
     }
 }
 

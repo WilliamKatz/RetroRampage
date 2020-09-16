@@ -23,6 +23,8 @@
 		58C1B92824213B220065454F /* Engine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1B92024213B220065454F /* Engine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58F917C9251176A9006DF422 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F917C8251176A9006DF422 /* World.swift */; };
 		58F917CB2511778F006DF422 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F917CA2511778F006DF422 /* Rect.swift */; };
+		58F917CF25119AEC006DF422 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F917CE25119AEC006DF422 /* Tile.swift */; };
+		58F917D12511A26E006DF422 /* Map.json in Resources */ = {isa = PBXBuildFile; fileRef = 58F917D02511A26E006DF422 /* Map.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		58C1B92324213B220065454F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58F917C8251176A9006DF422 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		58F917CA2511778F006DF422 /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
+		58F917CE25119AEC006DF422 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		58F917D02511A26E006DF422 /* Map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Map.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 				58C1B909242090CA0065454F /* SceneDelegate.swift */,
 				58C1B90B242090CA0065454F /* ViewController.swift */,
 				580004EB251054C700977C3E /* UIImage+Bitmap.swift */,
+				58F917D02511A26E006DF422 /* Map.json */,
 				58C1B90D242090CA0065454F /* Main.storyboard */,
 				58C1B910242090CB0065454F /* Assets.xcassets */,
 				58C1B912242090CB0065454F /* LaunchScreen.storyboard */,
@@ -130,6 +135,7 @@
 				580004EF25105A0200977C3E /* Vector.swift */,
 				580004F125105A7100977C3E /* Player.swift */,
 				58F917C8251176A9006DF422 /* World.swift */,
+				58F917CE25119AEC006DF422 /* Tile.swift */,
 				580004ED2510584D00977C3E /* Renderer.swift */,
 				58F917CA2511778F006DF422 /* Rect.swift */,
 				580004E925104F9100977C3E /* Bitmap.swift */,
@@ -232,6 +238,7 @@
 			files = (
 				58C1B914242090CB0065454F /* LaunchScreen.storyboard in Resources */,
 				58C1B911242090CB0065454F /* Assets.xcassets in Resources */,
+				58F917D12511A26E006DF422 /* Map.json in Resources */,
 				58C1B90F242090CA0065454F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +271,7 @@
 				58F917CB2511778F006DF422 /* Rect.swift in Sources */,
 				58F917C9251176A9006DF422 /* World.swift in Sources */,
 				580004EA25104F9100977C3E /* Bitmap.swift in Sources */,
+				58F917CF25119AEC006DF422 /* Tile.swift in Sources */,
 				580004EE2510584D00977C3E /* Renderer.swift in Sources */,
 				580004F025105A0200977C3E /* Vector.swift in Sources */,
 				580004F225105A7100977C3E /* Player.swift in Sources */,
