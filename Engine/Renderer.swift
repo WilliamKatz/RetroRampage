@@ -21,12 +21,21 @@ public extension Renderer {
         // Draw map
         for y in 0..<world.map.height {
             for x in 0..<world.map.width where world.map[x,y].isWall {
-                let rect = Rect(
-                    min: Vector(x: Double(x), y: Double(y)) * scale,
-                    max: Vector(x: Double(x+1), y: Double(y+1)) * scale
-                
-                )
-                bitmap.fill(rect: rect, color: .white)
+                if world.map[x,y].isWall {
+                    let rect = Rect(
+                        min: Vector(x: Double(x), y: Double(y)) * scale,
+                        max: Vector(x: Double(x+1), y: Double(y+1)) * scale
+                    
+                    )
+                    bitmap.fill(rect: rect, color: .white)
+                } else if world.map.things[y * world.map.width + x].isPillar {
+                    let rect = Rect(
+                        min: Vector(x: Double(x), y: Double(y)) * scale,
+                        max: Vector(x: Double(x+1), y: Double(y+1)) * scale
+                    
+                    )
+                    bitmap.fill(rect: rect, color: .green)
+                }
             }
         }
         

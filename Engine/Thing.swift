@@ -9,4 +9,14 @@
 public enum Thing: Int, Decodable {
     case nothing
     case player
+    case pillar
+    
+    var isPillar: Bool {
+        switch self {
+        case .pillar:
+            return true
+        case .nothing, .player:
+            return false
+        }
+    }
 }

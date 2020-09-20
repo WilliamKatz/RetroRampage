@@ -17,7 +17,7 @@ public struct World {
                 let position = Vector(x: Double(x) + 0.5, y: Double(y) + 0.5)
                 let thing = map.things[y * map.width + x]
                 switch thing {
-                case .nothing:
+                case .nothing, .pillar:
                     break
                 case .player:
                     self.player = Player(position: position)

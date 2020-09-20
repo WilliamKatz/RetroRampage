@@ -19,7 +19,8 @@ class ViewController: UIViewController {
     private var world = World(map: loadMap())
     private var lastFrameTime = CACurrentMediaTime()
     private let panGesture = UIPanGestureRecognizer()
-
+    private var extraWorldTimeSteps: Double = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupImageView()
@@ -31,22 +32,29 @@ class ViewController: UIViewController {
         view.addGestureRecognizer(panGesture)
     }
     
-   @objc func update(_ displayLink: CADisplayLink) {
+    @objc func update(_ displayLink: CADisplayLink) {
         let timeStep = min(maximumTimeStep, displayLink.timestamp - lastFrameTime)
         let input = Input(velocity: inputVector)
-        let worldSteps = (timeStep / worldTimeStep).rounded(.up)
+        
+        /// Round down to get the whole number (add extra times from the previos loop)
+        let worldSteps = (timeStep / worldTimeStep + extraWorldTimeSteps).rounded(.down)
+        
+        /// Save the remainder so that we can factor it in the next update loop
+        extraWorldTimeSteps = (timeStep / worldTimeStep) - worldSteps
+        
+        /// Perform worldSteps # of updates frame. For frame rates above 120, this could be zero
         for _ in 0 ..< Int(worldSteps) {
             world.update(timeStep: timeStep / worldSteps, input: input)
         }
         lastFrameTime = displayLink.timestamp
-
+        
         let size = Int(min(imageView.bounds.width, imageView.bounds.height))
         var renderer = Renderer(width: size, height: size)
         renderer.draw(world)
-
+        
         imageView.image = UIImage(bitmap: renderer.bitmap)
     }
-
+    
     
     func setupImageView() {
         view.addSubview(imageView)
@@ -75,7 +83,7 @@ class ViewController: UIViewController {
             return Vector(x: 0, y: 0)
         }
     }
-
+    
 }
 
 
