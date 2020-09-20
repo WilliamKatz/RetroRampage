@@ -63,4 +63,10 @@ public extension Vector {
     static prefix func - (rhs: Vector) -> Vector {
         return Vector(x: -rhs.x, y: -rhs.y)
     }
+    
+    var length: Double {
+        return (x * x + y * y).squareRoot()
+    }
 }
+
+
