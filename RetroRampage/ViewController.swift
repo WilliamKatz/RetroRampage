@@ -31,21 +31,22 @@ class ViewController: UIViewController {
         view.addGestureRecognizer(panGesture)
     }
     
-    @objc func update(_ displayLink: CADisplayLink) {
+   @objc func update(_ displayLink: CADisplayLink) {
         let timeStep = min(maximumTimeStep, displayLink.timestamp - lastFrameTime)
         let input = Input(velocity: inputVector)
         let worldSteps = (timeStep / worldTimeStep).rounded(.up)
-        for _ in 0..<Int(worldSteps) {
+        for _ in 0 ..< Int(worldSteps) {
             world.update(timeStep: timeStep / worldSteps, input: input)
         }
         lastFrameTime = displayLink.timestamp
-        
-        let size = Int(min(512, min(imageView.bounds.width, imageView.bounds.height)))
+
+        let size = Int(min(imageView.bounds.width, imageView.bounds.height))
         var renderer = Renderer(width: size, height: size)
         renderer.draw(world)
-        
+
         imageView.image = UIImage(bitmap: renderer.bitmap)
     }
+
     
     func setupImageView() {
         view.addSubview(imageView)
@@ -65,13 +66,15 @@ class ViewController: UIViewController {
             let translation = panGesture.translation(in: view)
             var vector = Vector(x: Double(translation.x), y: Double(translation.y))
             vector /= max(joystickRadius, vector.length)
-            panGesture.setTranslation(CGPoint(x: vector.x, y: vector.y), in: view)
+            panGesture.setTranslation(CGPoint(
+                x: vector.x * joystickRadius,
+                y: vector.y * joystickRadius
+            ), in: view)
             return vector
         default:
             return Vector(x: 0, y: 0)
         }
     }
-
 
 }
 
