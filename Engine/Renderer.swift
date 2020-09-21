@@ -43,7 +43,11 @@ public extension Renderer {
         var rect = world.player.rect
         rect.min *= scale
         rect.max *= scale
-        
+    
+        // Draw Player's line of sight
+        let ray = Ray(origin: world.player.position, direction: world.player.direction)
+        let end = world.map.hitTest(ray)
+        bitmap.drawLine(from: world.player.position * scale, to: end * scale, color: .red)
         bitmap.fill(rect: rect, color: .blue)
     }
 }

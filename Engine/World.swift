@@ -35,6 +35,11 @@ public extension World {
         while let intersection = player.intersection(with: map) {
             player.position -= intersection
         }
+        
+        /// unit-ize the vector and pass it to the player as its direction
+        if input.velocity.length > 0 {
+            player.direction = input.velocity.unitVector
+        }
     }
 
     var size: Vector {

@@ -13,6 +13,7 @@
 		580004EE2510584D00977C3E /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580004ED2510584D00977C3E /* Renderer.swift */; };
 		580004F025105A0200977C3E /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580004EF25105A0200977C3E /* Vector.swift */; };
 		580004F225105A7100977C3E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580004F125105A7100977C3E /* Player.swift */; };
+		58336C5B2517D7EC0091B6C0 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58336C5A2517D7EC0091B6C0 /* Ray.swift */; };
 		58C1B908242090CA0065454F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1B907242090CA0065454F /* AppDelegate.swift */; };
 		58C1B90A242090CA0065454F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1B909242090CA0065454F /* SceneDelegate.swift */; };
 		58C1B90C242090CA0065454F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1B90B242090CA0065454F /* ViewController.swift */; };
@@ -60,6 +61,7 @@
 		580004ED2510584D00977C3E /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		580004EF25105A0200977C3E /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		580004F125105A7100977C3E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		58336C5A2517D7EC0091B6C0 /* Ray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
 		58C1B904242090CA0065454F /* RetroRampage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetroRampage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C1B907242090CA0065454F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58C1B909242090CA0065454F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				580004E725104F2300977C3E /* Color.swift */,
 				580004EF25105A0200977C3E /* Vector.swift */,
 				580004F125105A7100977C3E /* Player.swift */,
+				58336C5A2517D7EC0091B6C0 /* Ray.swift */,
 				58D788162516DEAB003C48C0 /* Input.swift */,
 				58F917C8251176A9006DF422 /* World.swift */,
 				58D788182516E76E003C48C0 /* Thing.swift */,
@@ -283,6 +286,7 @@
 				58D788172516DEAB003C48C0 /* Input.swift in Sources */,
 				580004F225105A7100977C3E /* Player.swift in Sources */,
 				58D788192516E76E003C48C0 /* Thing.swift in Sources */,
+				58336C5B2517D7EC0091B6C0 /* Ray.swift in Sources */,
 				580004E825104F2300977C3E /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,13 +441,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2B7P5KV3Q9;
+				DEVELOPMENT_TEAM = G6N5X5RF9Q;
 				INFOPLIST_FILE = RetroRampage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Killy.RetroRampage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.killy.RetroRampage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -456,13 +460,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2B7P5KV3Q9;
+				DEVELOPMENT_TEAM = G6N5X5RF9Q;
 				INFOPLIST_FILE = RetroRampage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Killy.RetroRampage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.killy.RetroRampage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

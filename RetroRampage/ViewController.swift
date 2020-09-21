@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         let worldSteps = (timeStep / worldTimeStep + extraWorldTimeSteps).rounded(.down)
         
         /// Save the remainder so that we can factor it in the next update loop
-        extraWorldTimeSteps = (timeStep / worldTimeStep) - worldSteps
+        extraWorldTimeSteps = max(0, (timeStep / worldTimeStep) - worldSteps)
         
         /// Perform worldSteps # of updates frame. For frame rates above 120, this could be zero
         for _ in 0 ..< Int(worldSteps) {

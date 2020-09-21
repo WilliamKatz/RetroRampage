@@ -67,6 +67,10 @@ public extension Vector {
     var length: Double {
         return (x * x + y * y).squareRoot()
     }
+    
+    var unitVector: Vector {
+        return self / length
+    }
 }
 
 
