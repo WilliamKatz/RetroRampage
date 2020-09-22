@@ -34,7 +34,11 @@ class ViewController: UIViewController {
     
     @objc func update(_ displayLink: CADisplayLink) {
         let timeStep = min(maximumTimeStep, displayLink.timestamp - lastFrameTime)
-        let input = Input(velocity: inputVector)
+        
+        /// Create the input
+        let inputVector = self.inputVector
+        let rotation = inputVector.x * world.player.turningSpeed * worldTimeStep
+        let input = Input(speed: -inputVector.y, rotation: Rotation(sine: sin(rotation), cosine: cos(rotation)))
         
         /// Round down to get the whole number (add extra times from the previos loop)
         let worldSteps = (timeStep / worldTimeStep + extraWorldTimeSteps).rounded(.down)
@@ -48,8 +52,8 @@ class ViewController: UIViewController {
         }
         lastFrameTime = displayLink.timestamp
         
-        let size = Int(min(imageView.bounds.width, imageView.bounds.height))
-        var renderer = Renderer(width: size, height: size)
+        let width = Int(imageView.bounds.width), height = Int(imageView.bounds.height)
+        var renderer = Renderer(width: width, height: height)
         renderer.draw(world)
         
         imageView.image = UIImage(bitmap: renderer.bitmap)

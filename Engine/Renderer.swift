@@ -1,53 +1,62 @@
-//
-//  Renderer.swift
-//  Engine
-//
-//  Created by Katz, Billy on 9/14/20.
-//  Copyright © 2020 KillyBatz. All rights reserved.
-//
-
-public struct Renderer {
-    public private(set) var bitmap: Bitmap
+    //
+    //  Renderer.swift
+    //  Engine
+    //
+    //  Created by Katz, Billy on 9/14/20.
+    //  Copyright © 2020 KillyBatz. All rights reserved.
+    //
     
-    public init(width: Int, height: Int) {
-        self.bitmap = Bitmap(width: width, height: height, color: .black)
+    public struct Renderer {
+        public private(set) var bitmap: Bitmap
+        
+        public init(width: Int, height: Int) {
+            self.bitmap = Bitmap(width: width, height: height, color: .black)
+        }
     }
-}
+    
+    
+    public extension Renderer {
+        mutating func draw(_ world: World) {
+            
+            
+            // Calculate the view plane
+            let focalLength = 1.0
+            let viewWidth = Double(world.map.width) / Double(world.map.height)
+            let viewPlane = world.player.direction.orthogonal * viewWidth
+            let viewCenter = world.player.position + world.player.direction * focalLength
+            let viewStart = viewCenter - viewPlane / 2
+            
+            // Draw Player's field of view
+            let columns = bitmap.width
+            let step = viewPlane / Double(columns)
+            var columnPosition = viewStart
+            for x in 0..<columns {
+                let rayDirection = columnPosition - world.player.position
+                let viewPlaneDistance = rayDirection.length
+                let ray = Ray(
+                    origin: world.player.position,
+                    direction: rayDirection / viewPlaneDistance
+                )
+                let end = world.map.hitTest(ray)
+                
+                /// draw the wall
+                let wallDistance = (end - ray.origin).length
+                let wallHeight = 1.0
+                
+                let distanceRatio = viewPlaneDistance / focalLength
+                let perpendicular = wallDistance / distanceRatio
+                let height = wallHeight * focalLength / perpendicular * Double(bitmap.height)
 
-
-public extension Renderer {
-    mutating func draw(_ world: World) {
-        let scale = Double(bitmap.height) / world.size.y
-        // Draw map
-        for y in 0..<world.map.height {
-            for x in 0..<world.map.width where world.map[x,y].isWall {
-                if world.map[x,y].isWall {
-                    let rect = Rect(
-                        min: Vector(x: Double(x), y: Double(y)) * scale,
-                        max: Vector(x: Double(x+1), y: Double(y+1)) * scale
-                    
-                    )
-                    bitmap.fill(rect: rect, color: .white)
-                } else if world.map.things[y * world.map.width + x].isPillar {
-                    let rect = Rect(
-                        min: Vector(x: Double(x), y: Double(y)) * scale,
-                        max: Vector(x: Double(x+1), y: Double(y+1)) * scale
-                    
-                    )
-                    bitmap.fill(rect: rect, color: .green)
-                }
+                
+                let wallColor: Color = end.x.rounded(.down) == end.x ? .white : .gray
+                bitmap.drawLine(
+                    from: Vector(x: Double(x), y: (Double(bitmap.height) - height) / 2),
+                    to: Vector(x: Double(x), y: (Double(bitmap.height) + height) / 2),
+                    color: wallColor
+                )
+                
+                columnPosition += step
+                
             }
         }
-        
-        // Draw Player
-        var rect = world.player.rect
-        rect.min *= scale
-        rect.max *= scale
-    
-        // Draw Player's line of sight
-        let ray = Ray(origin: world.player.position, direction: world.player.direction)
-        let end = world.map.hitTest(ray)
-        bitmap.drawLine(from: world.player.position * scale, to: end * scale, color: .red)
-        bitmap.fill(rect: rect, color: .blue)
     }
-}

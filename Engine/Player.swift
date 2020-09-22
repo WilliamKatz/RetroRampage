@@ -8,7 +8,8 @@
 
 public struct Player {
     public var radius: Double = 0.25
-    public let speed: Double = 2
+    public let speed: Double = 3
+    public let turningSpeed: Double = .pi
     public var position: Vector
     public var velocity: Vector
     public var direction: Vector

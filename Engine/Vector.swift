@@ -71,6 +71,10 @@ public extension Vector {
     var unitVector: Vector {
         return self / length
     }
+    
+    var orthogonal: Vector {
+        return Vector(x: -y, y: x)
+    }
 }
 
 

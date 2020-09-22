@@ -30,15 +30,11 @@ public struct World {
 
 public extension World {
     mutating func update(timeStep: Double, input: Input) {
-        player.velocity = input.velocity * player.speed
+        player.velocity = player.direction * input.speed * player.speed
+        player.direction = player.direction.rotated(by: input.rotation)
         player.position += player.velocity * timeStep
         while let intersection = player.intersection(with: map) {
             player.position -= intersection
-        }
-        
-        /// unit-ize the vector and pass it to the player as its direction
-        if input.velocity.length > 0 {
-            player.direction = input.velocity.unitVector
         }
     }
 
