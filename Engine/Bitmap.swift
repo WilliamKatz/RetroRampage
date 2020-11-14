@@ -30,6 +30,10 @@ public extension Bitmap {
         }
     }
     
+    subscript(normalized x: Double, y: Double) -> Color {
+        return self[Int(x * Double(width)), Int(y * Double(height))]
+    }
+    
     init(width: Int, height: Int, color: Color) {
         self.pixels = Array(repeating: color, count: width * height)
         self.width = width
@@ -63,5 +67,24 @@ public extension Bitmap {
             point += smallStep
         }
         
+    }
+    
+    ///
+    /// Draws a column of pixels based on a bitmap
+    /// - Parameter sourceX: The horizontal position in the Bitmap to get
+    /// - Parameter source: The Bitmap to project on to the column
+    /// - Parameter point: The vertical point at which to start drawing the column from the destination Bitmap
+    /// - Parameter height: The output height of the column to draw
+    ///
+    mutating func drawColumn(_ sourceX: Int, of source: Bitmap, at point: Vector, height: Double) {
+        let start = Int(point.y)
+        let end = Int((point.y+height).rounded(.up))
+        let stepY = Double(source.height) / height
+        
+        for y in max(0, start) ..< min(end, self.height) {
+            let sourceY = max(0, Double(y) - point.y) * stepY
+            let sourceColor = source[sourceX, Int(sourceY)]
+            self[Int(point.x), y] = sourceColor
+        }
     }
 }

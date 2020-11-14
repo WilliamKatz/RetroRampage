@@ -13,6 +13,14 @@ private let joystickRadius: Double = 40
 private let maximumTimeStep: Double = 1 / 20
 private let worldTimeStep: Double = 1 / 120
 
+func loadTextures() -> Textures {
+    /// Pipes all the textures defined in the Texture enum to images in Assets.xcassets using an extension on Bitmap
+    Textures { (textureName) -> Bitmap in
+        let texture = UIImage(named: textureName)!
+        return Bitmap(uiimage: texture)!
+    }
+}
+
 class ViewController: UIViewController {
     
     private let imageView = UIImageView()
@@ -20,6 +28,7 @@ class ViewController: UIViewController {
     private var lastFrameTime = CACurrentMediaTime()
     private let panGesture = UIPanGestureRecognizer()
     private var extraWorldTimeSteps: Double = 0
+    private let textures = loadTextures()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +62,7 @@ class ViewController: UIViewController {
         lastFrameTime = displayLink.timestamp
         
         let width = Int(imageView.bounds.width), height = Int(imageView.bounds.height)
-        var renderer = Renderer(width: width, height: height)
+        var renderer = Renderer(width: width, height: height, textures: textures)
         renderer.draw(world)
         
         imageView.image = UIImage(bitmap: renderer.bitmap)

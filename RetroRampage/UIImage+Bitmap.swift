@@ -9,7 +9,36 @@
 import UIKit
 import Engine
 
+extension Bitmap {
+    init?(uiimage: UIImage) {
+        guard let cgImage = uiimage.cgImage else { return nil }
+        
+        let alphaInfo = CGImageAlphaInfo.premultipliedLast
+        let bytesPerPixel = MemoryLayout<Color>.size
+        let bytesPerRow = cgImage.width * bytesPerPixel
+        
+        var pixels = [Color](repeating: .clear, count: cgImage.width * cgImage.height)
+        
+        guard let context = CGContext(data: &pixels,
+                                      width: cgImage.width,
+                                      height: cgImage.height,
+                                      bitsPerComponent: 8,
+                                      bytesPerRow: bytesPerRow,
+                                      space: CGColorSpaceCreateDeviceRGB(),
+                                      bitmapInfo: alphaInfo.rawValue)
+        else {
+            return nil
+        }
+        
+        
+        // this draws the image and populates the [Color]
+        context.draw(cgImage, in: CGRect(origin: .zero, size: uiimage.size))
+        self.init(width: cgImage.width, pixels: pixels)
+    }
+}
+
 extension UIImage {
+    
     convenience init?(bitmap: Bitmap) {
         let alphaInfo = CGImageAlphaInfo.premultipliedLast
         let bytesPerPixel = MemoryLayout<Color>.size
