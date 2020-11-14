@@ -18,7 +18,6 @@
     public extension Renderer {
         mutating func draw(_ world: World) {
             
-            
             // Calculate the view plane
             let focalLength = 1.0
             let viewWidth = Double(world.map.width) / Double(world.map.height)
